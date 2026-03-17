@@ -1,8 +1,8 @@
-from genres import views
 from django.urls import path
+from . import views
 
 
 urlpatterns = [
-    path('', views.genre_create_list_view, name='genre-create-list'),
-    path('<int:pk>/', views.genre_detail_view, name='genre-detail'),
+    path('genres/', views.GenreListCreateAPIView.as_view(), name='genre-create-list'),
+    path('genres/<int:pk>/', views.GenreRetrieveUpdateDestroyAPIView.as_view(), name='genre-detail'),
 ]
