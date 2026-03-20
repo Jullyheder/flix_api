@@ -14,6 +14,5 @@ class Movie(models.Model):
     actors = models.ManyToManyField(Actor, related_name='movies')
     resume = models.TextField(null=True, blank=True)
 
-
     def __str__(self):
         return self.title

@@ -19,6 +19,5 @@ class Actor(models.Model):
         null=True
     )
 
-
     def __str__(self):
         return self.name
