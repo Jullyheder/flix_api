@@ -5,7 +5,8 @@ NATIONALITY_CHOICES = (
     ('USA', 'Estados Unidos'),
     ('BRAZIL', 'Brasil'),
     ('UK', 'Reino Unido'),
-    ('ITALY', 'Italia')
+    ('ITALY', 'Italia'),
+    ('CHINA', 'China'),
 )
 
 

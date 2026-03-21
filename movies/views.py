@@ -9,20 +9,32 @@ from rest_framework.status import HTTP_200_OK
 from rest_framework.permissions import IsAuthenticated
 from app.permissions import GlobalDefaultPermission
 from movies.models import Movie
-from movies.serializers import MovieSerializer, MovieStatsSerializer
+from movies.serializers import (
+    MovieSerializer,
+    MovieStatsSerializer,
+    MovieListDetailSerializer
+)
 from reviews.models import Review
 
 
 class MovieListCreateAPIView(ListCreateAPIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Movie.objects.all()
-    serializer_class = MovieSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return MovieListDetailSerializer
+        return MovieSerializer
 
 
 class MovieRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Movie.objects.all()
-    serializer_class = MovieSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return MovieListDetailSerializer
+        return MovieSerializer
 
 
 class MovieStatsAPIView(APIView):
